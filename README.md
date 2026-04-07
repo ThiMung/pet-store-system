@@ -1,58 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Pet Store System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Mô tả dự án
+Pet Store System là ứng dụng web giúp người dùng xem, tìm kiếm, mua thú cưng và quản lý thông tin người dùng, đơn hàng. Dự án sử dụng PHP framework **Laravel**.
 
-## About Laravel
+## Mục tiêu
+- Trải nghiệm mua sắm thú cưng dễ dàng.  
+- Quản trị viên quản lý dữ liệu thú cưng, người dùng, đơn hàng.  
+- Hỗ trợ AI tư vấn và nhận diện thú cưng.  
+- Bảo mật thông tin người dùng.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tính năng chính
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| STT | Tính năng | Mô tả |
+|-----|-----------|-------|
+| 1 | Trang chủ, header, footer | Xem thú cưng nổi bật, danh sách mới, chọn nhanh để mua. |
+| 2 | Đăng ký, đăng nhập, phân quyền | Người dùng đăng ký mua thú cưng; hệ thống kiểm tra dữ liệu hợp lệ. |
+| 3 | Tìm kiếm, bộ lọc | Tìm kiếm theo tên, lọc theo loại thú cưng (chó, mèo…). |
+| 4 | Trang danh sách sản phẩm | Hiển thị toàn bộ thú cưng. |
+| 5 | Chi tiết sản phẩm | Xem thông tin chi tiết trước khi mua. |
+| 6 | Giỏ hàng | Thêm, xóa, cập nhật thú cưng, xem tổng tiền. |
+| 7 | Đơn hàng | Đặt hàng, xem lại các đơn đã mua hoặc đang đặt. |
+| 8 | Quản lý profile | Xem, chỉnh sửa thông tin cá nhân, đổi mật khẩu. |
+| 9 | Admin dashboard | Quản trị viên tổng hợp dữ liệu thú cưng, người dùng, đơn hàng. |
+| 10 | Manage | Quản lý thông tin thú cưng, người dùng, đơn hàng. |
+| 11 | CRUD Pet | Thêm, sửa, xóa, cập nhật thú cưng. |
+| 12 | Tích hợp AI tư vấn | Gợi ý thú cưng phù hợp với người dùng. |
+| 13 | Tích hợp AI nhận diện | Nhận diện hình ảnh thú cưng, gợi ý loại và thông tin tương tự. |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Công nghệ
+- Backend: PHP 8, Laravel 10  
+- Frontend: Blade, HTML, CSS, Bootstrap  
+- Database: MySQL  
+- Version Control: Git & GitHub  
 
-## Learning Laravel
+## Cấu trúc
+    ```bash
+    pet-store-system/
+    │
+    ├─ app/          # Controllers, Models, Services
+    ├─ database/     # Migration, Seeder, SQL mẫu
+    ├─ public/       # CSS, JS, hình ảnh
+    ├─ resources/    # Blade templates, assets
+    ├─ routes/       # web.php, api.php
+    └─ README.md
+## Hướng dẫn cài đặt
+1. Clone repo:
+   ```bash
+   git clone https://github.com/ThiMung/pet-store-system.git
+2. Cài đặt composer:
+    ```bash
+    cd pet-store-system
+    composer install
+3. Copy file .env.example thành .env và cấu hình database:
+    ```bash
+    DB_DATABASE=pet_store
+    DB_USERNAME=root
+    DB_PASSWORD=
+4. Chạy migration & seeder:
+    ```bash
+    php artisan migrate --seed
+5. Chạy ứng dụng:
+    ```bash
+    php artisan serve
+6. Truy cập: http://127.0.0.1:8000
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Nhóm phát triển
+- Thành viên 1: Đinh Thị Mừng – Full-stack Developer
+- Thành viên 2: Nguyễn Phúc Khuê – Full-stack Developer
+- Thành viên 3: Hồ Thị Như – Full-stack Developer
