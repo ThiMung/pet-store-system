@@ -79,11 +79,12 @@ body {
     padding: 8px 20px;
     font-weight: bold;
 }
-.btn-login, .btn-register {
+.btn-login, .btn-register, .btn-logout {
     background: #fff;
     color: var(--red-dark);
     border-radius: 20px;
     border: none;
+    text-decoration: none;
     padding: 8px 20px;
     font-weight: bold;
 }
