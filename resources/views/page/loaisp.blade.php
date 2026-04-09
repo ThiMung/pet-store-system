@@ -10,12 +10,12 @@
         @foreach($products as $p)
         <div class="col-md-3 mb-4">
             <div class="product-card">
-                <a>
+                <a href="{{ route('chitiet', $p->id) }}">
                     <img src="{{ asset('images/'.$p->image) }}" class="img-fluid">
                 </a>
                 <div class="product-name">{{ $p->name }}</div>
                 <div class="product-price">{{ number_format($p->price) }}đ</div>
-                <a class="btn btn-buy">Mua ngay</a>
+                <a href="{{ route('chitiet', $p->id) }}" class="btn btn-buy">Mua ngay</a>
             </div>
         </div>
         @endforeach

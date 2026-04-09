@@ -15,3 +15,6 @@ Route::get('/danh-muc/{id}', [PageController::class, 'category'])->name('categor
 
 // Hiển thị tất cả phụ kiện
 Route::get('/tat-ca-phu-kien', [PageController::class, 'allAccessories'])->name('all_accessories');
+
+// Xem chi tiết sản phẩm theo ID
+Route::get('/san-pham/{id}', [PageController::class, 'detail'])->name('chitiet');
