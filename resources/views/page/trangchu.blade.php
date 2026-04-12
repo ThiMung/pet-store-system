@@ -4,8 +4,27 @@
 <div class="container mt-4">
     <div class="row mb-5">
         <div class="col-md-8">
-            <div class="rounded-4 overflow-hidden shadow">
-                <img src="{{ asset('images/cho-trang.jpg') }}" class="w-100" style="height: 400px; object-fit: cover;">
+            <div id="petCarousel" class="carousel slide carousel-fade shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="{{ asset('images/cho-trang.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ asset('images/meo-anh-long-dai.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ asset('images/meo-munchkin.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="3000">
+                        <img src="{{ asset('images/o-nem,-giuong-ngu.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
         </div>
         <div class="col-md-4">
