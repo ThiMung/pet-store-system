@@ -24,6 +24,11 @@ Route::get('/san-pham/{id}', [PageController::class, 'detail'])->name('chitiet')
 // Tìm kiếm sản phẩm
 Route::get('/search', [PageController::class, 'search'])->name('search');
 
+// Các route cho Giỏ hàng
+Route::get('/gio-hang', [PageController::class, 'indexCart'])->name('cart.index');
+Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
+Route::post('/gio-hang/xoa', [PageController::class, 'remove'])->name('cart.remove');
+
 // Các route cho Auth
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

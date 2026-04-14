@@ -24,13 +24,28 @@
                 <a class="nav-link" href="#">GIỚI THIỆU</a>
                 <a class="nav-link" href="#">LIÊN HỆ</a>
             </nav>
-            <div class="cart-box d-flex align-items-center">
-                <i class="fa fa-shopping-cart fs-4 me-2"></i>
-                <div>
-                    <div class="fw-bold">Giỏ hàng</div>
-                    <small>0 sản phẩm - 0đ</small>
+            @php
+                $totalQuantity = 0;
+                $totalPrice = 0;
+                
+                // Kiểm tra xem giỏ hàng có tồn tại trong session không
+                if(session('cart')) {
+                    foreach(session('cart') as $details) {
+                        $totalQuantity += $details['quantity']; // Cộng dồn số lượng
+                        $totalPrice += $details['price'] * $details['quantity']; // Tính tổng tiền
+                    }
+                }
+            @endphp
+
+            <a href="{{ route('cart.index') }}" style="text-decoration: none; color: inherit;">
+                <div class="cart-box d-flex align-items-center" style="cursor: pointer;">
+                    <i class="fa fa-shopping-cart fs-4 me-2"></i>
+                    <div>
+                        <div class="fw-bold">Giỏ hàng</div>
+                        <small>{{ $totalQuantity }} sản phẩm - {{ number_format($totalPrice) }}đ</small>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -69,8 +84,6 @@
                             <i class="fa fa-user-plus"></i> Đăng ký
                         </a>
                     @endguest
-                    {{-- <a href="{{ route('login') }}" class="btn-login"><i class="fa fa-sign-in-alt"></i> Đăng nhập</a>
-                    <a href="{{ route('register') }}" class="btn-register"><i class="fa fa-user-plus"></i> Đăng ký</a> --}}
                 </div>
             </div>
         </div>
