@@ -36,3 +36,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Các route cho Admin
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
+Route::get('/admin/orders', [AdminController::class, 'manageOrders'])->name('admin.orders');
