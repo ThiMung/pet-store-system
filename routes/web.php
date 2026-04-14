@@ -26,6 +26,10 @@ Route::get('/search', [PageController::class, 'search'])->name('search');
 
 // Hiển thị tất cả sản phẩm (Chó + Mèo + Phụ kiện)
 Route::get('/tat-ca-san-pham', [PageController::class, 'allProducts'])->name('all_products');
+// Các route cho Giỏ hàng
+Route::get('/gio-hang', [PageController::class, 'indexCart'])->name('cart.index');
+Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
+Route::post('/gio-hang/xoa', [PageController::class, 'remove'])->name('cart.remove');
 
 // Các route cho Auth
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
