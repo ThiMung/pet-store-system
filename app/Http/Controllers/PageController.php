@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -51,9 +49,17 @@ class PageController extends Controller
         return view('page.loaisp', compact('products'));
     }
 
-    // 3. Hàm Tất cả phụ kiện
-    public function allAccessories() {
+    // Lọc tất cả phụ kiện
+    public function allAccessories()
+    {
         $products = Product::where('product_type', 'accessory')->paginate(8);
+        return view('page.loaisp', compact('products'));
+    }
+
+    // HÀM MỚI: Lấy tất cả sản phẩm (Chó + Mèo + Phụ kiện)
+    public function allProducts()
+    {
+        $products = Product::paginate(8);
         return view('page.loaisp', compact('products'));
     }
 }

@@ -67,7 +67,12 @@
                 </div>
                 <span class="text-sm font-semibold text-gray-700">Admin</span>
             </div>
-            <a href="#" class="text-red-500 font-bold text-sm hover:text-red-700 transition">Đăng xuất</a>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="text-red-500 font-bold text-sm hover:text-red-700 transition">
+                    Đăng xuất
+                </button>
+            </form>
         </div>
     </header>
 

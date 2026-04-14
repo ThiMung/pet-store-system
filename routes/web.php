@@ -24,6 +24,9 @@ Route::get('/san-pham/{id}', [PageController::class, 'detail'])->name('chitiet')
 // Tìm kiếm sản phẩm
 Route::get('/search', [PageController::class, 'search'])->name('search');
 
+// Hiển thị tất cả sản phẩm (Chó + Mèo + Phụ kiện)
+Route::get('/tat-ca-san-pham', [PageController::class, 'allProducts'])->name('all_products');
+
 // Các route cho Auth
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
