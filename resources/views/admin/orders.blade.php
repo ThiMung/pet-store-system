@@ -25,7 +25,15 @@
                 <tr class="border-b hover:bg-gray-50 transition">
                     <td class="py-4 px-4 font-medium">#ORD-{{ str_pad($order->id, 3, '0', STR_PAD_LEFT) }}</td>
                     <td class="py-4 px-4">{{ $order->user->name ?? 'Khách lẻ' }}</td>
-                    <td class="py-4 px-4 text-gray-500 text-sm">{{ $order_de->product_ids ?? 'N/A' }}</td>
+                    <td class="py-4 px-4 text-gray-500 text-sm">
+                        @if($order->products->count() > 0)
+                            @foreach($order->products as $product)
+                                <div class="mb-1">• {{ $product->name }} (x{{ $product->pivot->quantity }})</div>
+                            @endforeach
+                        @else
+                            <span class="text-red-400">Không có dữ liệu</span>
+                        @endif
+                    </td>
                     <td class="py-4 px-4 font-bold text-red-600">{{ number_format($order->total_price) }}đ</td>
                     <td class="py-4 px-4 text-gray-500">{{ $order->created_at->format('d/m/Y') }}</td>
                     <td class="py-4 px-4">

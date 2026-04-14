@@ -63,7 +63,8 @@ class AdminController extends Controller
     public function manageOrders()
     {
         // Lấy danh sách đơn hàng, có thể dùng paginate để phân trang như trong ảnh bạn thiết kế
-        $orders = \App\Models\Order::with('user')->orderBy('created_at', 'desc')->paginate(10);
+        // $orders = \App\Models\Order::with('user')->orderBy('created_at', 'desc')->paginate(10);
+        $orders = Order::with('products')->get();
 
         return view('admin.orders', compact('orders'));
     }
