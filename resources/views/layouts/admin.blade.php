@@ -5,6 +5,8 @@
     <title>PetShop Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -69,7 +71,15 @@
                 </div>
                 <span class="text-sm font-semibold text-gray-700">Admin</span>
             </div>
-            <a href="#" class="text-red-500 font-bold text-sm hover:text-red-700 transition">Đăng xuất</a>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit"
+                        class="btn btn-light rounded-pill px-4 py-2 fw-bold shadow-sm d-flex align-items-center gap-2"
+                        style="color: #b91c1c !important; background-color: white !important; border: none;">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Đăng xuất
+                </button>
+            </form>
         </div>
     </header>
 
