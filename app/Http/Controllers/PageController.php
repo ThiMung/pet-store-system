@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -51,9 +49,61 @@ class PageController extends Controller
         return view('page.loaisp', compact('products'));
     }
 
-    // 3. Hàm Tất cả phụ kiện
-    public function allAccessories() {
+    // Lọc tất cả phụ kiện
+    public function allAccessories()
+    {
         $products = Product::where('product_type', 'accessory')->paginate(8);
         return view('page.loaisp', compact('products'));
+    }
+
+    // HÀM MỚI: Lấy tất cả sản phẩm (Chó + Mèo + Phụ kiện)
+    public function allProducts()
+    {
+        $products = Product::paginate(8);
+        return view('page.loaisp', compact('products'));
+    }
+    
+    // PHẦN GIỎ HÀNG
+    // Hiển thị trang giỏ hàng
+    public function indexCart()
+    {
+        $cart = session()->get('cart', []);
+        return view('page.giohang', compact('cart')); // Trỏ tới file giohang.blade.php
+    }
+
+    // Thêm vào giỏ hàng
+    public function add(Request $request)
+    {
+        $id = $request->input('id');
+        $cart = session()->get('cart', []);
+
+        // Nếu thú cưng đã có trong giỏ thì tăng số lượng
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            // Lần đầu thêm vào giỏ
+            $cart[$id] = [
+                "name" => $request->input('name'),
+                "quantity" => 1,
+                "price" => $request->input('price'),
+                "image" => $request->input('image')
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->route('cart.index')->with('success', 'Đã thêm thú cưng vào giỏ hàng!');
+    }
+
+    // Xóa khỏi giỏ hàng
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            return redirect()->back()->with('success', 'Đã xóa khỏi giỏ hàng!');
+        }
     }
 }
