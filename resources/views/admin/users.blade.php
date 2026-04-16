@@ -21,7 +21,7 @@
         <h3 class="text-xl font-bold text-gray-800">Quản lý người dùng</h3>
         <p class="text-gray-400 text-xs mt-1">Chỉ hiển thị và quản lý tài khoản khách hàng (Role: User)</p>
     </div>
-    <button onclick="toggleModal('userModal')" class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-blue-200 transition-all font-bold text-sm">
+    <button onclick="toggleModal('userModal')" class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm">
         + Thêm người dùng mới
     </button>
 </div>
@@ -51,7 +51,7 @@
                 </td>
                 <td class="px-6 text-gray-600 italic">{{ $user->email }}</td>
                 <td class="px-6 text-center text-gray-500 font-medium">
-                    {{ $user->created_at->format('d/m/Y') }}
+                    {{ $user->created_at ? $user->created_at->format('d/m/Y') : 'Chưa có ngày' }}
                 </td>
                 <td class="px-6">
                     <div class="flex justify-center gap-2">
@@ -59,7 +59,7 @@
                             ✏️
                         </button>
 
-                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Nhu có chắc chắn muốn xóa người dùng này không?')">
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition shadow-sm">

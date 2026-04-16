@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pet;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -63,9 +64,49 @@ class AdminController extends Controller
     public function manageOrders()
     {
         // Lấy danh sách đơn hàng, có thể dùng paginate để phân trang như trong ảnh bạn thiết kế
-        // $orders = \App\Models\Order::with('user')->orderBy('created_at', 'desc')->paginate(10);
-        $orders = Order::with('products')->get();
+        $orders = Order::with(['user', 'products'])
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(2);
+        // $orders = Order::with('products')->get();
 
         return view('admin.orders', compact('orders'));
+    }
+
+    // 1. Chỉ lấy danh sách những người là 'user'
+    public function users() {
+        $users = User::where('role', 'user') // Chỉ lấy khách hàng
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+        return view('admin.users', compact('users'));
+    }
+
+    // 2. Thêm mới luôn mặc định là 'user'
+    public function storeUser(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'user', // Luôn gán role user để an toàn
+        ]);
+
+        return redirect()->back()->with('success', 'Đã thêm thành viên mới!');
+    }
+
+    // 3. Bảo vệ: Chỉ cho phép xóa nếu người đó là 'user'
+    public function destroyUser($id) {
+        $user = User::where('id', $id)->where('role', 'user')->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Không có quyền xóa tài khoản quản trị!');
+        }
+
+        $user->delete();
+        return redirect()->back()->with('success', 'Đã xóa người dùng thành công!');
     }
 }
