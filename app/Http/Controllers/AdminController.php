@@ -66,7 +66,7 @@ class AdminController extends Controller
         // Lấy danh sách đơn hàng, có thể dùng paginate để phân trang như trong ảnh bạn thiết kế
         $orders = Order::with(['user', 'products'])
                     ->orderBy('created_at', 'desc')
-                    ->paginate(1);
+                    ->paginate(10);
         return view('admin.orders', compact('orders'));
     }
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
     public function users() {
         $users = User::where('role', 'user') // Chỉ lấy khách hàng
                     ->orderBy('id', 'desc')
-                    ->paginate(1);
+                    ->paginate(10);
         return view('admin.users', compact('users'));
     }
 
