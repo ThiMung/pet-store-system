@@ -80,18 +80,26 @@ body {
     font-weight: bold;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 .btn-login, .btn-register {
 =======
 .btn-login, .btn-register, .btn-logout {
 >>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
+=======
+.btn-login, .btn-register, .btn-logout {
+>>>>>>> fc148ecc0fa33d1b9cd7f0b98fe42c9f4c95712f
     background: #fff;
     color: var(--red-dark);
     border-radius: 20px;
     border: none;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     text-decoration: none;
 >>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
+=======
+    text-decoration: none;
+>>>>>>> fc148ecc0fa33d1b9cd7f0b98fe42c9f4c95712f
     padding: 8px 20px;
     font-weight: bold;
 }
@@ -165,6 +173,7 @@ body {
     height: 100%;
 }
 .product-card:hover {
+    transform: translateY(-10px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .product-card img {
@@ -190,6 +199,11 @@ body {
     padding: 5px 20px;
     width: 80%;
     font-weight: bold;
+}
+
+.btn-buy:hover {
+    background-color: #e67e22 !important;
+    transform: scale(1.05);
 }
 
 /* Footer */

@@ -45,8 +45,11 @@
                             <p class="text-pink fw-bold fs-5 mb-3">{{ number_format($product->price) }}đ</p>
                             
                             <a href="{{ route('chitiet', $product->id) }}" class="btn btn-warning w-100 text-white fw-bold rounded-pill py-2 shadow-sm buy-btn">
-                                <i class="fa fa-shopping-cart me-1"></i> MUA NGAY
+                                <i class="fa fa-eye"></i> Xem chi tiết
                             </a>
+                            {{-- <a href="{{ route('chitiet', $a->id) }}" class="btn btn-buy">
+                            <i class="fa fa-eye"></i> Xem chi tiết
+                        </a> --}}
                         </div>
                     </div>
                 </div>
@@ -81,7 +84,7 @@
 
     /* Hiệu ứng Card giống trang chủ */
     .product-item-custom {
-        border-radius: 20px !important; /* Bo góc mạnh như trang chủ */
+        border-radius: 20px !important;
         transition: all 0.3s ease;
     }
 
@@ -95,7 +98,7 @@
     }
 
     .buy-btn:hover {
-        background-color: #e67e22 !important; /* Cam đậm hơn khi hover */
+        background-color: #e67e22 !important;
         transform: scale(1.05);
     }
 

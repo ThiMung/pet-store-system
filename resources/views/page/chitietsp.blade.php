@@ -26,9 +26,18 @@
             <p><strong>Mô tả:</strong> {{ $product->description ?? 'Đang cập nhật nội dung...' }}</p>
 
             <div class="mt-4">
-                <button class="btn btn-danger btn-lg px-5">THÊM VÀO GIỎ HÀNG</button>
+                <form action="{{ route('cart.add') }}" method="POST">
+                    @csrf <input type="hidden" name="id" value="{{ $product->id }}">
+                    <input type="hidden" name="name" value="{{ $product->name }}">
+                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <input type="hidden" name="image" value="{{ asset('images/'.$product->image) }}">
+                    
+                    <button type="submit" class="btn btn-danger btn-lg px-5">
+                        <i class="fas fa-cart-plus me-2"></i> THÊM VÀO GIỎ HÀNG
+                    </button>
+                </form>
             </div>
-        </div>
+            </div>
     </div>
 </div>
 @endsection

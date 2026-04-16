@@ -1,18 +1,14 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+Route::get('/', function () {
+    return view('page.trangchu');
+});
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes - Tích hợp Homepage & Auth System
-|--------------------------------------------------------------------------
-*/
-
-// Giao diện trang chủ (Nhóm trưởng)
-// Lưu ý: Bạn truy cập http://127.0.0.1:8000/ là ra trang này
+// Giao diện user
 Route::get('/', [PageController::class, 'index'])->name('trangchu');
 
 // Hiển thị theo danh mục (Chó/Mèo)
@@ -24,7 +20,18 @@ Route::get('/tat-ca-phu-kien', [PageController::class, 'allAccessories'])->name(
 // Xem chi tiết sản phẩm theo ID
 Route::get('/san-pham/{id}', [PageController::class, 'detail'])->name('chitiet');
 
-// --- CÁC ROUTE CHO AUTH (Phần của bạn) ---
+// Tìm kiếm sản phẩm
+Route::get('/search', [PageController::class, 'search'])->name('search');
+
+// Hiển thị tất cả sản phẩm (Chó + Mèo + Phụ kiện)
+Route::get('/tat-ca-san-pham', [PageController::class, 'allProducts'])->name('all_products');
+// Các route cho Giỏ hàng
+Route::get('/gio-hang', [PageController::class, 'indexCart'])->name('cart.index');
+Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
+Route::post('/gio-hang/xoa', [PageController::class, 'remove'])->name('cart.remove');
+
+// Các route cho Auth
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
