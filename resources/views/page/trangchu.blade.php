@@ -34,14 +34,16 @@
                 @foreach($dogs as $p)
                 <div class="col-md-3">
                     <div class="product-card">
-                        <a>
+                        <a href="{{ route('chitiet', $p->id) }}">
                             <img src="{{ asset('images/'.$p->image) }}" class="img-fluid">
                         </a>
                         
                         <div class="product-name">{{ $p->name }}</div>
                         <div class="product-price">{{ number_format($p->price) }}đ</div>
                         
-                        <a class="btn btn-buy">
+
+                        <a href="{{ route('chitiet', $p->id) }}" class="btn btn-buy">
+
                             <i class="fa fa-eye"></i> Xem chi tiết
                         </a>
                     </div>
@@ -65,14 +67,18 @@
                 @foreach($cats as $p)
                 <div class="col-md-3">
                     <div class="product-card">
-                        <a>
+
+                        <a href="{{ route('chitiet', $p->id) }}">
+
                             <img src="{{ asset('images/'.$p->image) }}" class="img-fluid">
                         </a>
                         
                         <div class="product-name">{{ $p->name }}</div>
                         <div class="product-price">{{ number_format($p->price) }}đ</div>
                         
-                        <a class="btn btn-buy">
+
+                        <a href="{{ route('chitiet', $p->id) }}" class="btn btn-buy">
+
                             <i class="fa fa-eye"></i> Xem chi tiết
                         </a>
                     </div>
@@ -96,14 +102,18 @@
                 @foreach($accessories->take(4) as $a)
                 <div class="col-md-3">
                     <div class="product-card">
-                        <a>
+
+                        <a href="{{ route('chitiet', $a->id) }}">
+
                             <img src="{{ asset('images/'.$a->image) }}" class="img-fluid">
                         </a>
                         
                         <div class="product-name">{{ $a->name }}</div>
                         <div class="product-price">{{ number_format($a->price) }}đ</div>
                         
-                        <a class="btn btn-buy">
+
+                        <a href="{{ route('chitiet', $a->id) }}" class="btn btn-buy">
+
                             <i class="fa fa-eye"></i> Xem chi tiết
                         </a>
                     </div>

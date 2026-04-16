@@ -13,7 +13,7 @@
         TRANG CHỦ
     </a>
 
-    <a class="nav-link {{ Route::is('all_products') || Route::is('category') || Route::is('all_accessories') ? 'active' : '' }}" 
+    <a class="nav-link {{ Route::is('all_products') || Route::is('category') || Route::is('all_accessories') ? 'active' : '' }}"
        href="{{ route('all_products') }}">
         TẤT CẢ SẢN PHẨM
     </a>
@@ -35,7 +35,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-7">
-                    <form method="GET" class="search-group">
+
+                    <form action="#" method="GET" class="search-group">
+
                         <input type="text" name="keyword" placeholder="Tìm thú cưng, phụ kiện..." required>
                         <button type="submit" class="btn-search-main">
                             <i class="fa fa-search"></i>
@@ -47,13 +49,28 @@
                 </div>
                 <div class="col-md-5 d-flex justify-content-between">
                     <button class="btn-ai"><i class="fa fa-sparkles"></i> Tư Vấn AI</button>
-                   <a href="{{ route('login') }}" class="btn-login text-decoration-none">
-    <i class="fa fa-sign-in-alt"></i> Đăng nhập
-</a>
 
-<a href="{{ route('register') }}" class="btn-register text-decoration-none">
-    <i class="fa fa-user-plus"></i> Đăng ký
-</a>
+                    @auth
+                        <span class="text-white fw-bold">Xin chào, {{ Auth::user()->name }}</span>
+
+                        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn-logout">
+                                <i class="fa fa-sign-out-alt"></i> Đăng xuất
+                            </button>
+                        </form>
+                    @endauth
+
+                    @guest
+                        <a href="{{ route('login') }}" class="btn-login">
+                            <i class="fa fa-sign-in-alt"></i> Đăng nhập
+                        </a>
+                        <a href="{{ route('register') }}" class="btn-register">
+                            <i class="fa fa-user-plus"></i> Đăng ký
+                        </a>
+                    @endguest
+                   
+
                 </div>
             </div>
         </div>

@@ -79,11 +79,19 @@ body {
     padding: 8px 20px;
     font-weight: bold;
 }
+<<<<<<< HEAD
 .btn-login, .btn-register {
+=======
+.btn-login, .btn-register, .btn-logout {
+>>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
     background: #fff;
     color: var(--red-dark);
     border-radius: 20px;
     border: none;
+<<<<<<< HEAD
+=======
+    text-decoration: none;
+>>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
     padding: 8px 20px;
     font-weight: bold;
 }
