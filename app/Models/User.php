@@ -28,8 +28,10 @@ class User extends Authenticatable
             'password'          => 'hashed',
         ];
     }
-public function isAdmin(): bool
+    public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
+
+    protected $fillable = ['name', 'email', 'password', 'role'];
 }
