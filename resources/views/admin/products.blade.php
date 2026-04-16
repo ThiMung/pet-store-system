@@ -9,7 +9,7 @@
 
     <!-- BUTTON -->
     <div class="mb-4">
-        <button class="bg-gradient-to-r from-pink-400 to-orange-400 text-white px-6 py-2 rounded-full shadow hover:scale-105 transition">
+        <button class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm">
             + Thêm sản phẩm
         </button>
     </div>
@@ -20,32 +20,32 @@
         <a href="{{ route('admin.products', ['type'=>'all']) }}"
            class="px-5 py-2 rounded-full text-sm font-medium transition
            {{ ($type=='all'||!$type)
-                ? 'bg-gradient-to-r from-pink-400 to-orange-400 text-white shadow'
-                : 'bg-white shadow-sm hover:bg-gray-100' }}">
+                ? 'bg-gradient-to-r from-pink-500 to-orange-600 text-white shadow'
+                : 'bg-pink shadow-sm hover:bg-gray-100' }}">
            📦 Tổng sản phẩm
         </a>
 
         <a href="{{ route('admin.products', ['type'=>'cho']) }}"
            class="px-5 py-2 rounded-full text-sm font-medium transition
            {{ $type=='cho'
-                ? 'bg-gradient-to-r from-pink-400 to-orange-400 text-white shadow'
-                : 'bg-white shadow-sm hover:bg-gray-100' }}">
+                ? 'bg-gradient-to-r from-pink-500 to-orange-600 text-white shadow'
+                : 'bg-pink shadow-sm hover:bg-gray-100' }}">
            🐶 Chó
         </a>
 
         <a href="{{ route('admin.products', ['type'=>'meo']) }}"
            class="px-5 py-2 rounded-full text-sm font-medium transition
            {{ $type=='meo'
-                ? 'bg-gradient-to-r from-pink-400 to-orange-400 text-white shadow'
-                : 'bg-white shadow-sm hover:bg-gray-100' }}">
+                ? 'bg-gradient-to-r from-pink-500 to-orange-600 text-white shadow'
+                : 'bg-pink shadow-sm hover:bg-gray-100' }}">
            🐱 Mèo
         </a>
 
         <a href="{{ route('admin.products', ['type'=>'accessory']) }}"
            class="px-5 py-2 rounded-full text-sm font-medium transition
            {{ $type=='accessory'
-                ? 'bg-gradient-to-r from-pink-400 to-orange-400 text-white shadow'
-                : 'bg-white shadow-sm hover:bg-gray-100' }}">
+                ? 'bg-gradient-to-r from-pink-500 to-orange-600 text-white shadow'
+                : 'bg-pink shadow-sm hover:bg-gray-100' }}">
            🧸 Phụ kiện
         </a>
 
