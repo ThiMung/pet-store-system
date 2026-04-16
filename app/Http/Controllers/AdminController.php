@@ -53,7 +53,7 @@ class AdminController extends Controller
             }
         }
 
-        // 3. Sắp xếp: Đổi 'desc' thành 'asc' để ID 1 lên đầu
+        // 3. Sắp xếp và phân trang
         $products = $query->orderBy('products.id', 'asc')
                         ->paginate(5)
                         ->appends(request()->query());
@@ -66,9 +66,7 @@ class AdminController extends Controller
         // Lấy danh sách đơn hàng, có thể dùng paginate để phân trang như trong ảnh bạn thiết kế
         $orders = Order::with(['user', 'products'])
                     ->orderBy('created_at', 'desc')
-                    ->paginate(2);
-        // $orders = Order::with('products')->get();
-
+                    ->paginate(1);
         return view('admin.orders', compact('orders'));
     }
 
@@ -76,7 +74,7 @@ class AdminController extends Controller
     public function users() {
         $users = User::where('role', 'user') // Chỉ lấy khách hàng
                     ->orderBy('id', 'desc')
-                    ->paginate(10);
+                    ->paginate(1);
         return view('admin.users', compact('users'));
     }
 
@@ -85,7 +83,10 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
+        ], [
+            'email.unique' => 'Email này đã được sử dụng!',
+            'password.min' => 'Mật khẩu phải từ 8 ký tự trở lên.',
         ]);
 
         User::create([

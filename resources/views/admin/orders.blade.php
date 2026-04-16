@@ -48,6 +48,11 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-6 px-4 py-3 bg-gray-50 border-t border-gray-100 rounded-b-3xl">
+            <div class="pagination-wrapper">
+                {{ $orders->links() }}
+            </div>
+        </div>
     </div>
 </div>
 @endsection
