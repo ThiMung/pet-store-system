@@ -53,3 +53,12 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::post('/admin/users/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
 // Xóa người dùng
 Route::delete('/admin/users/delete/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+
+// Quản lý sản phẩm Admin
+Route::prefix('admin/products')->group(function () {
+    Route::post('/store', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+    Route::post('/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+    Route::get('/delete/{id}', [AdminController::class, 'destroyProduct'])->name('admin.products.destroy');
+});
+
+Route::post('/admin/products/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');

@@ -110,4 +110,81 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->back()->with('success', 'Đã xóa người dùng thành công!');
     }
+    // Thêm sản phẩm mới
+public function storeProduct(Request $request) {
+    $request->validate(['name' => 'required', 'price' => 'required|numeric', 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048']);
+
+    // 1. Xử lý upload ảnh
+    $imageName = time().'.'.$request->image->extension();  
+    $request->image->move(public_path('images'), $imageName);
+
+    // 2. Lưu bảng Products
+    $product = Product::create([
+        'name' => $request->name,
+        'price' => $request->price,
+        'image' => $imageName,
+        'product_type' => $request->product_type,
+        'description' => $request->description,
+        'stock' => $request->stock ?? 0,
+    ]);
+
+    // 3. Lưu bảng chi tiết tùy loại
+    if($request->product_type == 'pet') {
+        Pet::create([
+            'product_id' => $product->id,
+            'category_id' => $request->category_id,
+            'breed' => $request->breed,
+        ]);
+    } else {
+        Accessory::create([
+            'product_id' => $product->id,
+            'accessory_type' => $request->accessory_type,
+        ]);
+    }
+
+    return redirect()->back()->with('success', 'Thêm sản phẩm thành công!');
+}
+
+// Xóa sản phẩm
+public function destroyProduct($id) {
+    $product = Product::findOrFail($id);
+    // Xóa file ảnh trong thư mục public/images
+    if(file_exists(public_path('images/'.$product->image))){
+        unlink(public_path('images/'.$product->image));
+    }
+    $product->delete(); // Sẽ tự xóa pet/accessory nhờ liên kết
+    return redirect()->back()->with('success', 'Đã xóa sản phẩm!');
+}
+
+// Cập nhật sản phẩm
+public function updateProduct(Request $request, $id) {
+    $product = Product::findOrFail($id);
+
+    // 1. Cập nhật bảng Products
+    $product->name = $request->name;
+    $product->price = $request->price;
+    $product->product_type = $request->product_type;
+
+    // Nếu có upload ảnh mới thì mới thay, không thì giữ ảnh cũ
+    if ($request->hasFile('image')) {
+        // Xóa ảnh cũ nếu tồn tại
+        if(file_exists(public_path('images/'.$product->image))){
+            unlink(public_path('images/'.$product->image));
+        }
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('images'), $imageName);
+        $product->image = $imageName;
+    }
+    $product->save();
+
+    // 2. Cập nhật bảng chi tiết (Pet hoặc Accessory)
+    if($request->product_type == 'pet') {
+        $pet = Pet::updateOrCreate(
+            ['product_id' => $product->id],
+            ['category_id' => $request->category_id]
+        );
+    }
+
+    return redirect()->back()->with('success', 'Cập nhật sản phẩm thành công!');
+}
 }
