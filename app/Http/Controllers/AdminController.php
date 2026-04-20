@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pet;
+use App\Models\Accessory;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
