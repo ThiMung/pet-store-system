@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AiController;
 
 use App\Http\Controllers\AuthController;
 Route::get('/', function () {
@@ -43,3 +44,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Các route cho Admin
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
+
+// Các route cho AI Tư vấn
+// Trang hiển thị form tư vấn
+Route::get('/tu-van-ai', function() {
+    return view('page.ai_tuvan');
+})->name('ai.consult');
+
+// Route xử lý gửi dữ liệu lên AI
+Route::post('/tu-van-ai', [AiController::class, 'getRecommendation'])->name('ai.getRecommendation');
+
+// Hiển thị trang tìm kiếm bằng hình ảnh
+Route::get('/search-by-image', [AiController::class, 'index'])->name('ai.search_by_image.index');
+
+// Xử lý form tìm kiếm
+Route::post('/search-by-image', [AiController::class, 'searchByImage'])->name('ai.search_by_image');
