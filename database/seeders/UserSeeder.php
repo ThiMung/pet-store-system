@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('user123456'),
                 'phone' => '0987654321',
                 'address' => 'Hồ Chí Minh, Việt Nam',
-                'role' => 'customer',
+                'role' => 'user',
             ],
         ]);
     }

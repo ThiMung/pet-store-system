@@ -35,12 +35,14 @@
            <span>📦</span> <span class="font-medium">Sản phẩm</span>
         </a>
 
-        <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">
-           <span>🛒</span> <span class="font-medium text-white/80">Đơn hàng</span>
+        <a href="{{ route('admin.orders') }}"
+           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/orders*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+           <span>🛒</span> <span class="font-medium">Đơn hàng</span>
         </a>
 
-        <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">
-           <span>👥</span> <span class="font-medium text-white/80">Người dùng</span>
+        <a href="{{ route('admin.users') }}"
+           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/users*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+           <span>👥</span> <span class="font-medium">Người dùng</span>
         </a>
 
         <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">

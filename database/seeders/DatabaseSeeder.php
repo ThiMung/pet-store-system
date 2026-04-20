@@ -22,6 +22,7 @@ public function run(): void
             AccessorySeeder::class,
             CartSeeder::class,
             OrderSeeder::class,
+            OrderDetailSeeder::class,
             AILogSeeder::class,
         ]);
     }
