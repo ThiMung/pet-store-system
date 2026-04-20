@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>PetShop Admin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -25,31 +31,29 @@
     </div>
 
     <nav class="space-y-1">
-        <a href="{{ route('admin.dashboard') }}"
-           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/dashboard') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
-           <span>📊</span> <span class="font-medium">Tổng quan</span>
-        </a>
+          <a href="{{ route('admin.dashboard') }}"
+              class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/dashboard') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+              <i class="bi bi-bar-chart-fill"></i> <span class="font-medium">Tổng quan</span>
+          </a>
 
-        <a href="{{ route('admin.products') }}"
-           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/products*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
-           <span>📦</span> <span class="font-medium">Sản phẩm</span>
-        </a>
+          <a href="{{ route('admin.products') }}"
+              class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/products*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+              <i class="bi bi-box-seam"></i> <span class="font-medium">Sản phẩm</span>
+          </a>
 
-        <a href="{{ route('admin.orders') }}"
-           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/orders*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
-           <span>🛒</span> <span class="font-medium">Đơn hàng</span>
-        </a>
+          <a href="{{ route('admin.orders') }}"
+              class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/orders*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+              <i class="bi bi-cart-fill"></i> <span class="font-medium">Đơn hàng</span>
+          </a>
 
-        <a href="{{ route('admin.users') }}"
-           class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/users*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
-           <span>👥</span> <span class="font-medium">Người dùng</span>
-        </a>
+          <a href="{{ route('admin.users') }}"
+              class="flex items-center gap-3 p-3 rounded-xl transition {{ request()->is('admin/users*') ? 'bg-white text-red-600 shadow' : 'hover:bg-white/10' }}">
+              <i class="bi bi-people-fill"></i> <span class="font-medium">Người dùng</span>
+          </a>
 
-        <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">
-
-            <span>🤖</span> <span class="font-medium text-white/80">AI Analytics</span>
-
-            </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">
+                <i class="bi bi-cpu-fill"></i> <span class="font-medium text-white/80">AI Analytics</span>
+          </a>
 </div>
 
 <div class="flex-1 flex flex-col min-w-0">

@@ -79,12 +79,27 @@ body {
     padding: 8px 20px;
     font-weight: bold;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+.btn-login, .btn-register {
+=======
 .btn-login, .btn-register, .btn-logout {
+>>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
+=======
+.btn-login, .btn-register, .btn-logout {
+>>>>>>> fc148ecc0fa33d1b9cd7f0b98fe42c9f4c95712f
     background: #fff;
     color: var(--red-dark);
     border-radius: 20px;
     border: none;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     text-decoration: none;
+>>>>>>> 722a1bc1db0a6af27a90b16e4d59e65a8d8ff2e5
+=======
+    text-decoration: none;
+>>>>>>> fc148ecc0fa33d1b9cd7f0b98fe42c9f4c95712f
     padding: 8px 20px;
     font-weight: bold;
 }

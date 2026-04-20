@@ -86,7 +86,7 @@
                     <div class="product-card">
                         <a href="{{ route('chitiet', $p->id) }}">
                             <img src="{{ asset('images/'.$p->image) }}" class="img-fluid">
-                        </a>
+                            </a>
                         
                         <div class="product-name">{{ $p->name }}</div>
                         <div class="product-price">{{ number_format($p->price) }}đ</div>

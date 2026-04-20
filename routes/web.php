@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\AdminController;
-
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('page.trangchu');
 });
@@ -32,6 +31,7 @@ Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
 Route::post('/gio-hang/xoa', [PageController::class, 'remove'])->name('cart.remove');
 
 // Các route cho Auth
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -39,6 +39,8 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/tat-ca-san-pham', [PageController::class, 'allProducts'])->name('all_products');
 
 // Các route cho Admin
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -51,3 +53,12 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::post('/admin/users/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
 // Xóa người dùng
 Route::delete('/admin/users/delete/{id}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+
+// Quản lý sản phẩm Admin
+Route::prefix('admin/products')->group(function () {
+    Route::post('/store', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+    Route::post('/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+    Route::get('/delete/{id}', [AdminController::class, 'destroyProduct'])->name('admin.products.destroy');
+});
+
+Route::post('/admin/products/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
