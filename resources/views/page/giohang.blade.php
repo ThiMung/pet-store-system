@@ -48,7 +48,10 @@
     <div style="text-align: right; margin-top: 20px;">
         <h3>Tổng tiền: <strong style="color: red;">{{ number_format($total) }}đ</strong></h3>
         @if(session('cart') && count(session('cart')) > 0)
-            <button style="background: green; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px;">THANH TOÁN</button>
+            <a href="{{ route('checkout') }}" 
+                style="background: green; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; text-decoration: none; display: inline-block; border-radius: 5px;">
+                THANH TOÁN
+            </a>
         @endif
     </div>
 </div>
