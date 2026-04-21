@@ -61,7 +61,7 @@
                     </form>
                 </div>
                 <div class="col-md-5 d-flex justify-content-between">
-                    <button class="btn-ai"><i class="fa fa-sparkles"></i> Tư Vấn AI</button>
+<button class="btn-ai"><i class="fa fa-sparkles"></i> Tư Vấn AI</button>
                     @auth
                         <span class="text-white fw-bold">Xin chào, {{ Auth::user()->name }}</span>
                         
