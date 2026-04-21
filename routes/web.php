@@ -4,6 +4,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PetController;
 Route::get('/', function () {
     return view('page.trangchu');
 });
@@ -62,3 +64,5 @@ Route::prefix('admin/products')->group(function () {
 });
 
 Route::post('/admin/products/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+
+// Route để điều hướng từ tổng quát sang từng phần của admin
