@@ -13,7 +13,7 @@
                     TRANG CHỦ
                 </a>
 
-                <a class="nav-link {{ Route::is('all_products') || Route::is('category') || Route::is('all_accessories') ? 'active' : '' }}" 
+                <a class="nav-link {{ Route::is('all_products') || Route::is('category') || Route::is('all_accessories') ? 'active' : '' }}"
                 href="{{ route('all_products') }}">
                     TẤT CẢ SẢN PHẨM
                 </a>
@@ -24,7 +24,7 @@
             @php
                 $totalQuantity = 0;
                 $totalPrice = 0;
-                
+
                 // Kiểm tra xem giỏ hàng có tồn tại trong session không
                 if(session('cart')) {
                     foreach(session('cart') as $details) {
@@ -63,8 +63,12 @@
                 <div class="col-md-5 d-flex justify-content-between">
 <button class="btn-ai"><i class="fa fa-sparkles"></i> Tư Vấn AI</button>
                     @auth
-                        <span class="text-white fw-bold">Xin chào, {{ Auth::user()->name }}</span>
-                        
+                        <a href="{{ route('profile.index') }}" class="text-decoration-none" style="cursor: pointer;">
+                            <span class="text-white fw-bold px-3 py-2 rounded-pill" style="transition: all 0.3s; background-color: #ff4d94; display: inline-block;">
+                                Xin chào, {{ Auth::user()->name }}
+                            </span>
+                        </a>
+
                         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                             @csrf
                             <button type="submit" class="btn-logout">

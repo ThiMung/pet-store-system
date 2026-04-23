@@ -4,6 +4,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('page.trangchu');
 });
@@ -62,3 +63,14 @@ Route::prefix('admin/products')->group(function () {
 });
 
 Route::post('/admin/products/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+
+Route::middleware(['auth'])->group(function () {
+    // 1. Route gọi form hiển thị hồ sơ
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
+    // 2. Route xử lý dữ liệu cập nhật thông tin (Tên, địa chỉ...)
+    Route::put('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
+
+    // 3. Route xử lý dữ liệu đổi mật khẩu
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+});
