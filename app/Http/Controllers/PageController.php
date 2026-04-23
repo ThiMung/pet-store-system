@@ -177,4 +177,29 @@ public function postCheckout(Request $request) {
 
         return view('page.order_history', compact('orders'));
     }
+
+    // ADMIN: Cập nhật trạng thái đơn hàng
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,completed',
+        ]);
+
+        $order = Order::findOrFail($id);
+        // Nếu có phân quyền admin thì kiểm tra ở đây
+        // if (!auth()->user()->is_admin) abort(403);
+
+        $order->status = $request->status;
+        $order->save();
+
+        // Nếu là request Ajax thì trả về JSON
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'status_label' => $order->status_label,
+            ]);
+        }
+        // Nếu là submit form thường
+        return redirect()->back()->with('success', 'Cập nhật trạng thái thành công!');
+    }
 }

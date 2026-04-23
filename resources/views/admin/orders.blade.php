@@ -37,12 +37,21 @@
                     <td class="py-4 px-4 font-bold text-red-600">{{ number_format($order->total_price) }}đ</td>
                     <td class="py-4 px-4 text-gray-500">{{ $order->created_at->format('d/m/Y') }}</td>
                     <td class="py-4 px-4">
-                        <span class="px-3 py-1 rounded-full text-xs font-bold {{ $order->status == 'completed' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600' }}">
-                            {{ $order->status == 'completed' ? 'Hoàn thành' : 'Đang xử lý' }}
-                        </span>
+                        <form method="POST" action="{{ route('admin.orders.updateStatus', $order->id) }}" class="d-inline">
+                            @csrf
+                            @method('PUT')
+                            <select name="status" class="form-select form-select-sm d-inline w-auto status-select"
+                                onchange="this.form.submit()"
+                                style="min-width:120px; display:inline-block; {{ $order->status == 'completed' ? 'background:#d1fae5;color:#059669;' : 'background:#fef9c3;color:#b45309;' }}">
+                                <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Đang chờ xử lý</option>
+                                <option value="completed" {{ $order->status == 'completed' ? 'selected' : '' }}>Đã hoàn thành</option>
+                            </select>
+                        </form>
                     </td>
                     <td class="py-4 px-4">
-                        <button class="text-blue-500 hover:scale-110 transition">🔄</button>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold {{ $order->status == 'completed' ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600' }}">
+                            {{ $order->status_label }}
+                        </span>
                     </td>
                 </tr>
                 @endforeach

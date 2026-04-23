@@ -12,8 +12,9 @@
         <div class="card mb-4 shadow-sm">
             <div class="card-header bg-light d-flex justify-content-between align-items-center">
                 <span><strong>Mã đơn: #MNK-{{ $order->id }}</strong> | Ngày đặt: {{ $order->created_at->format('d/m/Y H:i') }}</span>
-                <span class="badge {{ $order->status == 'pending' ? 'bg-warning' : 'bg-success' }}">
-                    {{ strtoupper($order->status) }}
+                <span class="badge px-3 py-1 rounded-pill text-white"
+                    style="background:{{ $order->status == 'pending' ? '#facc15' : '#22c55e' }};color:{{ $order->status == 'pending' ? '#b45309' : '#fff' }};font-weight:600;">
+                    {{ $order->status_label }}
                 </span>
             </div>
             <div class="card-body">

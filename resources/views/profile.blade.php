@@ -112,7 +112,7 @@
                     </div>
                     <div class="text-end">
                         <div class="fw-bold text-danger">{{ number_format($order->total_price, 0, '.', ',') }}đ</div>
-                        <a href="#" class="text-decoration-none small order-detail-link">Xem chi tiết →</a>
+                        <a href="{{ route('order.history', $order->id) }}" class="text-decoration-none small order-detail-link">Xem chi tiết →</a>
                     </div>
                 </div>
                     @endforeach

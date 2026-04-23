@@ -46,6 +46,9 @@ Route::post('/checkout', [PageController::class, 'postCheckout']);
 // Xem lịch sử đơn hàng
 Route::get('/order-history', [PageController::class, 'getOrderHistory'])->name('order.history');
 
+// Admin cập nhật trạng thái đơn hàng
+Route::put('admin/orders/{id}/status', [PageController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
 // Các route cho Auth
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
