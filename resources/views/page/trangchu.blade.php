@@ -10,13 +10,13 @@
                         <img src="{{ asset('images/cho-trang.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ asset('images/meo-anh-long-dai.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                        <img src="{{ asset('images/cho-poodle.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ asset('images/meo-munchkin.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                        <img src="{{ asset('images/meo-vang.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
                     </div>
                     <div class="carousel-item" data-bs-interval="3000">
-                        <img src="{{ asset('images/o-nem,-giuong-ngu.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
+                        <img src="{{ asset('images/meo-muop.jpg') }}" class="d-block w-100" style="height: 400px; object-fit: cover;">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
