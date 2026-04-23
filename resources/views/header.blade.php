@@ -55,13 +55,13 @@
                         <button type="submit" class="btn-search-main">
                             <i class="fa fa-search"></i>
                         </button>
-                        <button type="button" class="btn-photo">
+                        {{-- <button type="button" class="btn-photo">
                             <i class="fa fa-camera"></i>
-                        </button>
+                        </button> --}}
                     </form>
                 </div>
                 <div class="col-md-5 d-flex justify-content-between">
-<button class="btn-ai"><i class="fa fa-sparkles"></i> Tư Vấn AI</button>
+                    <a href="{{ route('ai.consult') }}" class="btn-ai">Tư Vấn AI</a>
                     @auth
                         <span class="text-white fw-bold">Xin chào, {{ Auth::user()->name }}</span>
 

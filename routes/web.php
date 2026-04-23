@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AiController;
+
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('page.trangchu');
 });
@@ -67,3 +69,12 @@ Route::prefix('admin/products')->group(function () {
 });
 
 Route::post('/admin/products/update/{id}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+
+// Các route cho AI Tư vấn
+// Trang hiển thị form tư vấn
+Route::get('/tu-van-ai', function() {
+    return view('page.ai_tuvan');
+})->name('ai.consult');
+
+Route::post('/ai-recommend', [AiController::class, 'recommend'])->name('ai.recommend');
+Route::post('/ai-identify', [AiController::class, 'identify'])->name('ai.identify');
