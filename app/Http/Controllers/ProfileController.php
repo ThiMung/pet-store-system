@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function index() {
         $user = Auth::user();
         $orders = $user->orders()->with('products')->latest()->paginate(5);
-        return view('profile.index', compact('user', 'orders'));
+        return view('profile', compact('user', 'orders'));
     }
 
     // HÀM 2: Xử lý dữ liệu cập nhật thông tin cá nhân
