@@ -25,6 +25,11 @@ Route::get('/search', [PageController::class, 'search'])->name('search');
 
 // Hiển thị tất cả sản phẩm (Chó + Mèo + Phụ kiện)
 Route::get('/tat-ca-san-pham', [PageController::class, 'allProducts'])->name('all_products');
+
+// Trang giới thiệu tĩnh (dùng layout Bootstrap)
+Route::view('/gioi-thieu', 'page.about')->name('about');
+// Trang liên hệ tĩnh (dùng layout Bootstrap)
+Route::view('/lien-he', 'page.contact')->name('contact');
 // Các route cho Giỏ hàng
 Route::get('/gio-hang', [PageController::class, 'indexCart'])->name('cart.index');
 Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
