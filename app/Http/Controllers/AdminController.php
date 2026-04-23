@@ -14,24 +14,30 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
 
-    public function dashboard()
-    {
-        $revenues = Order::where('status', 'completed')
-            ->select(DB::raw('SUM(total_price) as amount'), DB::raw("DATE_FORMAT(created_at, '%m/%Y') as month"))
-            ->groupBy('month')
-            ->orderBy('created_at', 'ASC')
-            ->get();
+ public function dashboard()
+{
+    // Lấy doanh thu các đơn hàng đã hoàn thành
+   $revenues = Order::where('status', 'completed')
+        ->select(
+            DB::raw('SUM(total_price) as amount'), 
+            DB::raw("DATE_FORMAT(created_at, '%m/%Y') as month")
+        )
+        ->groupBy('month')
+        ->orderBy('month', 'ASC')
+        ->get();
 
-        return view('admin.dashboard', [
-            'revenues' => $revenues,
-            'pets' => Pet::all(),
-            'products' => Product::orderBy('id','desc')->take(5)->get(),
-            'totalPets' => Pet::count(),
-            'totalProducts' => Product::count(),
-            'totalOrders' => Order::count(),
-            'totalUsers' => User::count(),
-        ]);
-    }
+    // Gom nhóm dữ liệu thống kê
+    $stats = [
+        'totalPets' => Pet::count(),
+        'totalProducts' => Product::count(),
+        'totalOrders' => Order::count(),
+        'totalUsers' => User::count(),
+    ];
+
+    $products = Product::orderBy('id', 'desc')->take(5)->get();
+
+    return view('admin.dashboard', compact('revenues', 'stats', 'products'));
+}
 
     public function products(Request $request)
     {
