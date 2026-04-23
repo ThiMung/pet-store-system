@@ -21,7 +21,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
-        // Ép Laravel dùng giao diện Tailwind cho phân trang
-        Paginator::useTailwind();
     }
 }

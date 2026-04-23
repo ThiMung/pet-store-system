@@ -37,7 +37,7 @@
         <div class="card shadow-sm border-0 h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="text-secondary small fw-medium">Đơn hàng</div>
+                    <div class="text-secondary small fw-medium">Tổng đơn hàng</div>
                     <div class="fs-2 fw-bold mt-1">{{ $totalOrders }}</div>
                     <div class="text-success small fw-semibold mt-1"><i class="bi bi-arrow-up"></i> hàng tháng</div>
                 </div>
@@ -51,7 +51,7 @@
         <div class="card shadow-sm border-0 h-100">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="text-secondary small fw-medium">Người dùng</div>
+                    <div class="text-secondary small fw-medium">Tổng người dùng</div>
                     <div class="fs-2 fw-bold mt-1">{{ $totalUsers }}</div>
                     <div class="text-success small fw-semibold mt-1"><i class="bi bi-arrow-up"></i> tài khoản mới</div>
                 </div>

@@ -12,7 +12,7 @@
 @endif
 
 <div class="mb-4">
-    <button class="btn btn-primary rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+    <button class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm">
         <i class="bi bi-plus-lg me-1"></i> Thêm sản phẩm mới
     </button>
 </div>
@@ -25,12 +25,12 @@
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $type=='cho' ? 'active' : '' }}" href="{{ route('admin.products', ['type'=>'cho']) }}">
-            <i class="bi bi-paw-fill me-2"></i> Chó cảnh
+            <i class="fa-solid fa-dog"></i> Chó cảnh
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $type=='meo' ? 'active' : '' }}" href="{{ route('admin.products', ['type'=>'meo']) }}">
-            <i class="bi bi-moon-stars-fill me-2"></i> Mèo cảnh
+            <i class="fa-solid fa-cat"></i> Mèo cảnh
         </a>
     </li>
     <li class="nav-item">
@@ -67,11 +67,11 @@
                             @if($p->product_type == 'pet')
                                 @if($p->category_id == 1)
                                     <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
-                                        <i class="bi bi-paw-fill me-1"></i> Chó
+                                        <i class="fa-solid fa-dog"></i>Chó
                                     </span>
                                 @else
                                     <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
-                                        <i class="bi bi-moon-stars-fill me-1"></i> Mèo
+                                        <i class="fa-solid fa-cat"></i> Mèo
                                     </span>
                                 @endif
                             @else
@@ -86,12 +86,12 @@
                         </td>
                         <td class="text-center pe-4">
                             <div class="d-flex gap-2 justify-content-center">
-                                <button class="btn btn-outline-warning btn-sm border-0" title="Sửa" 
+                                <button class="btn btn-outline-warning btn-sm border-0" title="Sửa"
                                         data-bs-toggle="modal" data-bs-target="#editModal{{$p->id}}">
                                     <i class="bi bi-pencil-square fs-5"></i>
                                 </button>
-                                <a href="{{ route('admin.products.destroy', $p->id) }}" 
-                                   class="btn btn-outline-danger btn-sm border-0" 
+                                <a href="{{ route('admin.products.destroy', $p->id) }}"
+                                   class="btn btn-outline-danger btn-sm border-0"
                                    onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')">
                                     <i class="bi bi-trash3-fill fs-5"></i>
                                 </a>
@@ -104,7 +104,7 @@
                             <form action="{{ route('admin.products.update', $p->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-content border-0 shadow">
-                                    <div class="modal-header bg-warning text-dark">
+                                    <div class="modal-header bg-gradient-to-r from-pink-500 to-orange-600 text-dark">
                                         <h5 class="modal-title"><i class="bi bi-pencil-square me-2"></i>Chỉnh sửa sản phẩm #{{$p->id}}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="modal-footer bg-light">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                                        <button type="submit" class="btn btn-warning px-4">Cập nhật thay đổi</button>
+                                        <button type="submit" class="btn bg-gradient-to-r from-pink-500 to-orange-600 px-4">Cập nhật thay đổi</button>
                                     </div>
                                 </div>
                             </form>

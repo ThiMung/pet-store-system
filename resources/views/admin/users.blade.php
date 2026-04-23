@@ -18,7 +18,7 @@
 
 <div class="mb-6 flex justify-between items-center">
     <div>
-        <h3 class="text-xl font-bold text-gray-800">Quản lý người dùng</h3>
+        <h2 class="text-lg font-bold text-gray-800">Danh sách người dùng</h2>
         <p class="text-gray-400 text-xs mt-1">Chỉ hiển thị và quản lý tài khoản khách hàng (Role: User)</p>
     </div>
     <button onclick="toggleModal('userModal')" class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm">
@@ -86,8 +86,8 @@
 
 <div id="userModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
     <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all">
-        <div class="p-6 border-b flex justify-between items-center bg-gray-50/50">
-            <h4 class="font-bold text-gray-800">Tạo tài khoản người dùng</h4>
+        <div class="p-6 border-b flex justify-between items-center bg-gradient-to-r from-pink-500 to-orange-600">
+            <h4 class="font-bold text-white">Tạo tài khoản người dùng</h4>
             <button onclick="toggleModal('userModal')" class="text-gray-400 hover:text-gray-600 text-2xl transition">&times;</button>
         </div>
 
@@ -112,7 +112,7 @@
             </div>
 
             <div class="pt-2">
-                <button type="submit" class="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-orange-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
                     Xác nhận thêm khách hàng
                 </button>
             </div>

@@ -213,3 +213,123 @@ footer h5 {
     margin-right: 15px;
     color: #fff;
 }
+
+/* Profile Page */
+.profile-container {
+    background-color: #fff5f5;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.profile-wrapper {
+    max-width: 1000px;
+}
+
+.profile-header {
+    height: 150px;
+    background: linear-gradient(to right, #ff4d94, #ff8c52);
+}
+
+.profile-avatar {
+    width: 130px;
+    height: 130px;
+    top: -60px;
+    left: 40px;
+}
+
+.profile-avatar-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #ff6b6b;
+    border: 2px solid white;
+}
+
+.profile-info-card {
+    background-color: #fff9f9;
+    border-radius: 1rem;
+}
+
+.profile-info-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-info-icon.email {
+    background-color: #ff7aa2;
+}
+
+.profile-info-icon.phone {
+    background-color: #ffb347;
+}
+
+.profile-info-icon.address {
+    background-color: #ffa3b3;
+}
+
+.profile-info-icon.joined {
+    background-color: #ffb3d9;
+}
+
+.profile-label {
+    font-size: 0.7rem;
+}
+
+.order-history-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #ff7aa2;
+}
+
+.order-item {
+    background-color: #fdfdfd;
+}
+
+.order-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #ff85a2;
+}
+
+.order-status-badge {
+    font-size: 0.6rem;
+}
+
+.order-date-label {
+    font-size: 0.7rem;
+}
+
+.order-detail-link {
+    color: #ff4d94;
+    font-size: 0.7rem;
+}
+
+.profile-page-modal-content {
+    background-color: #fff5f5;
+}
+
+.profile-join-info {
+    background-color: #f8f9fa;
+}
+
+.profile-submit-btn {
+    background-color: #ff4d94;
+    border-color: #ff4d94;
+}
+
+/* Utility Classes */
+.rounded-4 {
+    border-radius: 1rem !important;
+}
+
+.rounded-5 {
+    border-radius: 1.5rem !important;
+}
+
+.text-pink {
+    color: #ff4d94 !important;
+}
+
+.form-control.rounded-3:focus {
+    border-color: #ff4d94;
+    box-shadow: 0 0 0 0.2rem rgba(255, 77, 148, 0.25);
+}

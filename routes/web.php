@@ -6,6 +6,7 @@ use App\Http\Controllers\AiController;
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 Route::get('/', function () {
     return view('page.trangchu');
 });
@@ -54,7 +55,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
 Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
 Route::get('/admin/orders', [AdminController::class, 'manageOrders'])->name('admin.orders');
 
-// Route hiện tại của Nhu (Hiển thị danh sách)
+// Quản lý người dùng Admin
 Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 // Thêm mới người dùng
 Route::post('/admin/users/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
@@ -78,3 +79,13 @@ Route::get('/tu-van-ai', function() {
 
 Route::post('/ai-recommend', [AiController::class, 'recommend'])->name('ai.recommend');
 Route::post('/ai-identify', [AiController::class, 'identify'])->name('ai.identify');
+Route::middleware(['auth'])->group(function () {
+    // 1. Route gọi form hiển thị hồ sơ
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
+    // 2. Route xử lý dữ liệu cập nhật thông tin (Tên, địa chỉ...)
+    Route::put('/profile/update', [ProfileController::class, 'updateInfo'])->name('profile.update');
+
+    // 3. Route xử lý dữ liệu đổi mật khẩu
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+});

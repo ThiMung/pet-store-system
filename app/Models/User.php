@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'email', 'password', 'phone', 'address', 'role'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -33,5 +33,10 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    protected $fillable = ['name', 'email', 'password', 'role'];
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    protected $fillable = ['name', 'email', 'password', 'role', 'phone', 'address'];
 }

@@ -61,9 +61,13 @@
                     </form>
                 </div>
                 <div class="col-md-5 d-flex justify-content-between">
-                    <a href="{{ route('ai.consult') }}" class="btn-ai">Tư Vấn AI</a>
+                    <a href="{{ route('ai.consult') }}" class="btn-ai text-decoration-none">Tư Vấn AI</a>
                     @auth
-                        <span class="text-white fw-bold">Xin chào, {{ Auth::user()->name }}</span>
+                        <a href="{{ route('profile.index') }}" class="text-decoration-none" style="cursor: pointer;">
+                            <span class="text-white fw-bold px-3 py-2 rounded-pill" style="transition: all 0.3s; background-color: #ff4d94; display: inline-block;">
+                                Xin chào, {{ Auth::user()->name }}
+                            </span>
+                        </a>
 
                         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                             @csrf
