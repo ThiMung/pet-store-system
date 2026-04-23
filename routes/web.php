@@ -38,6 +38,14 @@ Route::get('/gio-hang', [PageController::class, 'indexCart'])->name('cart.index'
 Route::post('/gio-hang/them', [PageController::class, 'add'])->name('cart.add');
 Route::post('/gio-hang/xoa', [PageController::class, 'remove'])->name('cart.remove');
 
+// Các route cho Thanh toán
+// Trang thanh toán
+Route::get('/checkout', [PageController::class, 'getCheckout'])->name('checkout');
+// Xử lý đặt hàng
+Route::post('/checkout', [PageController::class, 'postCheckout']);
+// Xem lịch sử đơn hàng
+Route::get('/order-history', [PageController::class, 'getOrderHistory'])->name('order.history');
+
 // Các route cho Auth
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

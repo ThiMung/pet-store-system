@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
 {
@@ -109,5 +112,69 @@ class PageController extends Controller
             }
             return redirect()->back()->with('success', 'Đã xóa khỏi giỏ hàng!');
         }
+    }
+    // PHẦN THANH TOÁN
+    // 1. Giao diện trang thanh toán
+public function getCheckout() {
+    $cartItems = session('cart'); // Lấy từ session
+
+    if (!$cartItems || count($cartItems) == 0) {
+        return redirect()->route('trangchu')->with('error', 'Giỏ hàng trống!');
+    }
+
+    return view('page.checkout', compact('cartItems'));
+}
+
+    // 2. Xử lý đặt hàng (Chuyển từ Cart -> Order)
+public function postCheckout(Request $request) {
+    $cart = session('cart');
+    if (!$cart) return redirect()->route('trangchu');
+
+    $totalPrice = 0;
+    foreach($cart as $item) {
+        $totalPrice += $item['price'] * $item['quantity'];
+    }
+
+    DB::beginTransaction();
+    try {
+        // 1. Lưu bảng orders (Thông tin chung)
+        $order = new Order();
+        $order->user_id = Auth::id();
+        $order->total_price = $totalPrice;
+        $order->status = 'pending';
+        $order->save();
+
+        // 2. Lưu bảng order_details (Chi tiết từng món)
+        foreach ($cart as $id => $details) {
+            DB::table('order_details')->insert([
+                'order_id'   => $order->id,
+                'product_id' => $id,
+                'quantity'   => $details['quantity'],
+                'price'      => $details['price'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        // 3. XÓA GIỎ HÀNG TRONG SESSION
+        session()->forget('cart');
+
+        DB::commit();
+        return redirect()->route('order.history')->with('success', 'Đặt hàng thành công!');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->with('error', 'Lỗi: ' . $e->getMessage());
+    }
+}
+
+    // 3. Xem lịch sử đơn hàng
+    public function getOrderHistory() {
+        // Lấy đơn hàng cùng với danh sách sản phẩm thông qua quan hệ belongsToMany đã định nghĩa ở Model Order
+        $orders = Order::with('products')
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('page.order_history', compact('orders'));
     }
 }

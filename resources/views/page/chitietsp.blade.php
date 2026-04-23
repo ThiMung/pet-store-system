@@ -8,23 +8,25 @@
         </div>
 
         <div class="col-md-6">
-            <h2 class="fw-bold text-pink">{{ $product->name }}</h2>
-            <h3 class="text-danger fw-bold">{{ number_format($product->price) }}đ</h3>
-            <hr>
-            
-            <p><strong>Loại:</strong> {{ $product->product_type == 'pet' ? 'Thú cưng' : 'Phụ kiện' }}</p>
-            
-            @if($product->pet)
-                <p><strong>Giống:</strong> {{ $product->pet->breed }}</p>
-                <p><strong>Giới tính:</strong> {{ $product->pet->gender == 'male' ? 'Đực' : 'Cái' }}</p>
-            @endif
+            <h2>{{ $product->name }}</h2>
+            <h3 class="text-danger">{{ number_format($product->price) }}đ</h3>
 
-            @if($product->accessory)
-                <p><strong>Thương hiệu:</strong> {{ $product->accessory->brand }}</p>
-            @endif
+            <div class="specs mt-3">
+                <p><strong>Loại:</strong> {{ $product->product_type == 'pet' ? 'Thú cưng' : 'Phụ kiện' }}</p>
 
-            <p><strong>Mô tả:</strong> {{ $product->description ?? 'Đang cập nhật nội dung...' }}</p>
+                @if($product->product_type == 'pet' && $product->pet)
+                    <p><strong>Giống:</strong> {{ $product->pet->breed }}</p>
+                    <p><strong>Giới tính:</strong> {{ $product->pet->gender == 'male' ? 'Đực' : 'Cái' }}</p>
+                    <p><strong>Tuổi:</strong> {{ $product->pet->age }}</p>
+                    <p><strong>Tiêm phòng:</strong> {{ $product->pet->vaccination }}</p>
+                @elseif($product->product_type == 'accessory' && $product->accessory)
+                    <p><strong>Thương hiệu:</strong> {{ $product->accessory->brand }}</p>
+                    <p><strong>Chất liệu:</strong> {{ $product->accessory->material }}</p>
+                    <p><strong>Kích cỡ:</strong> {{ $product->accessory->size }}</p>
+                @endif
 
+                <p><strong>Mô tả:</strong> {{ $product->description }}</p>
+            </div>
             <div class="mt-4">
                 <form action="{{ route('cart.add') }}" method="POST">
                     @csrf <input type="hidden" name="id" value="{{ $product->id }}">
