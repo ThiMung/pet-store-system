@@ -51,11 +51,5 @@ Route::get('/tu-van-ai', function() {
     return view('page.ai_tuvan');
 })->name('ai.consult');
 
-// Route xử lý gửi dữ liệu lên AI
-Route::post('/tu-van-ai', [AiController::class, 'getRecommendation'])->name('ai.getRecommendation');
-
-// Hiển thị trang tìm kiếm bằng hình ảnh
-Route::get('/search-by-image', [AiController::class, 'index'])->name('ai.search_by_image.index');
-
-// Xử lý form tìm kiếm
-Route::post('/search-by-image', [AiController::class, 'searchByImage'])->name('ai.search_by_image');
+Route::post('/ai-recommend', [AiController::class, 'recommend'])->name('ai.recommend');
+Route::post('/ai-identify', [AiController::class, 'identify'])->name('ai.identify');
