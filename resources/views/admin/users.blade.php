@@ -54,16 +54,16 @@
                     {{ $user->created_at ? $user->created_at->format('d/m/Y') : 'Chưa có ngày' }}
                 </td>
                 <td class="px-6">
-                    <div class="flex justify-center gap-2">
-                        <button class="p-2 bg-yellow-50 text-yellow-600 rounded-lg hover:bg-yellow-500 hover:text-white transition shadow-sm">
-                            ✏️
-                        </button>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button type="button" onclick="openEditModal({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}')" class="btn btn-outline-warning btn-sm border-0">
+                            <i class="bi bi-pencil-square fs-5"></i>
+</button>
 
-                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?')">
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?')" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="p-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition shadow-sm">
-                                🗑️
+                            <button type="submit" class="btn btn-outline-danger btn-sm border-0">
+                                <i class="bi bi-trash3-fill fs-5"></i>
                             </button>
                         </form>
                     </div>
@@ -107,13 +107,51 @@
 
             <div>
                 <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1 ml-1">Mật khẩu</label>
-                <input type="password" name="password" required placeholder="Tối thiểu 6 ký tự"
+                <input type="password" name="password" required placeholder="Tối thiểu 8 ký tự"
+                    class="w-full px-4 py-3 border border-gray-100 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition">
+            </div>
+
+            <div class="pt-2">
+<button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-orange-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                    Xác nhận thêm khách hàng
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Sửa Người Dùng -->
+<div id="editUserModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all">
+        <div class="p-6 border-b flex justify-between items-center bg-gradient-to-r from-pink-500 to-orange-600">
+            <h4 class="font-bold text-white">Chỉnh sửa thông tin người dùng</h4>
+            <button onclick="toggleModal('editUserModal')" class="text-gray-400 hover:text-gray-600 text-2xl transition">&times;</button>
+        </div>
+
+        <form id="editUserForm" method="POST" class="p-6 space-y-4">
+            @csrf
+            @method('PUT')
+            <div>
+                <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1 ml-1">Họ và tên</label>
+                <input type="text" id="editName" name="name" required placeholder="Nhập tên khách hàng..."
+                    class="w-full px-4 py-3 border border-gray-100 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition">
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1 ml-1">Email</label>
+                <input type="email" id="editEmail" name="email" required placeholder="example@gmail.com"
+                    class="w-full px-4 py-3 border border-gray-100 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition">
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-bold text-gray-400 uppercase mb-1 ml-1">Mật khẩu (để trống nếu không đổi)</label>
+                <input type="password" id="editPassword" name="password" placeholder="Tối thiểu 8 ký tự"
                     class="w-full px-4 py-3 border border-gray-100 bg-gray-50 rounded-xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition">
             </div>
 
             <div class="pt-2">
                 <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-orange-600 text-white py-3.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-100">
-                    Xác nhận thêm khách hàng
+                    Cập nhật thông tin
                 </button>
             </div>
         </form>
@@ -127,11 +165,24 @@
         modal.classList.toggle('hidden');
     }
 
+    // Hàm mở modal sửa với dữ liệu người dùng
+    function openEditModal(userId, userName, userEmail) {
+document.getElementById('editName').value = userName;
+        document.getElementById('editEmail').value = userEmail;
+        document.getElementById('editPassword').value = '';
+        document.getElementById('editUserForm').action = `/admin/users/${userId}`;
+        toggleModal('editUserModal');
+    }
+
     // Đóng modal khi click ra ngoài vùng trắng
     window.onclick = function(event) {
-        const modal = document.getElementById('userModal');
-        if (event.target == modal) {
-            modal.classList.add('hidden');
+        const userModal = document.getElementById('userModal');
+        const editUserModal = document.getElementById('editUserModal');
+        if (event.target == userModal) {
+            userModal.classList.add('hidden');
+        }
+        if (event.target == editUserModal) {
+            editUserModal.classList.add('hidden');
         }
     }
 </script>

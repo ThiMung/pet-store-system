@@ -12,7 +12,7 @@
 @endif
 
 <div class="mb-4">
-    <button class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm">
+    <button class="bg-gradient-to-r from-pink-500 to-orange-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-pink-200 transition-all font-bold text-sm" data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="bi bi-plus-lg me-1"></i> Thêm sản phẩm mới
     </button>
 </div>
@@ -165,7 +165,7 @@
         <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-content border-0 shadow">
-                <div class="modal-header bg-primary text-white">
+                <div class="modal-header bg-gradient-to-r from-pink-500 to-orange-600 text-dark">
                     <h5 class="modal-title"><i class="bi bi-plus-circle me-2"></i>Thêm sản phẩm mới</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
-                    <button type="submit" class="btn btn-primary px-4">Lưu sản phẩm</button>
+                    <button type="submit" class="btn bg-gradient-to-r from-pink-500 to-orange-600 px-4">Lưu sản phẩm</button>
                 </div>
             </div>
         </form>

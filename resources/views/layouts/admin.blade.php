@@ -54,9 +54,6 @@
               <i class="bi bi-people-fill"></i> <span class="font-medium">Người dùng</span>
           </a>
 
-          <a href="#" class="flex items-center gap-3 p-3 rounded-xl transition hover:bg-white/10">
-                <i class="bi bi-cpu-fill"></i> <span class="font-medium text-white/80">AI Analytics</span>
-          </a>
 </div>
 
 <div class="flex-1 flex flex-col min-w-0">
